@@ -19,12 +19,14 @@ class QuestionsController extends Controller
         */
         $questions->transform(function (Questions $questions) {
 
+            $response = json_decode($questions->close_answer);
+
             return [
                 'id' => $questions->id,
                 'type' => $questions->type,
                 'question' => $questions->question,
                 'open_answer' => $questions->open_answer,
-                'close_answer' => $questions->close_answer,
+                'close_answer' => $questions->close_answer ,
                 'feedback' => $questions->feedback,
                 'user_id' => $questions->user_id,
             ];
@@ -46,7 +48,7 @@ class QuestionsController extends Controller
     {
         $data = $request->all();
         Questions::create($data);
-        return with(['message' => 'criada com sucesso!']);
+        return response()->json()->setStatusCode('201');
     }
 
     /**
@@ -70,7 +72,15 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $questions = Questions::find($id);
+        $questions->question = $request->get('question');
+        $questions->type = $request->get('type');
+        $questions->open_answer = $request->get('open_answer');
+        $questions->close_answer = $request->get('close_answer');
+        $questions->feedback = $request->get('feedback');
+        $questions->user_id = $request->get('user_id');
+
         $questions->save();
         return response()->json()->setStatusCode('200');
 
