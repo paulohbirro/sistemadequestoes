@@ -72,16 +72,15 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $questions = Questions::find($id);
-        $questions->question = $request->get('question');
-        $questions->type = $request->get('type');
-        $questions->open_answer = $request->get('open_answer');
+        $questions->question     = $request->get('question');
+        $questions->type         = $request->get('type');
+        $questions->open_answer  = $request->get('open_answer');
         $questions->close_answer = $request->get('close_answer');
-        $questions->feedback = $request->get('feedback');
-        $questions->user_id = $request->get('user_id');
-
+        $questions->feedback     = $request->get('feedback');
+        $questions->user_id      = $request->get('user_id');
         $questions->save();
+
         return response()->json()->setStatusCode('200');
 
     }
