@@ -20,7 +20,6 @@ class QuestionsTest extends TestCase
 
     public function setUp()
     {
-
         parent::setUp();
         $this->seed();
         $this->question = Questions::first();
