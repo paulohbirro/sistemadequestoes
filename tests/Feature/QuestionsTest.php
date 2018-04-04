@@ -3,7 +3,9 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Questions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 
 class QuestionsTest extends TestCase
 {
@@ -12,13 +14,25 @@ class QuestionsTest extends TestCase
      *
      * @return void
      */
+
+    use RefreshDatabase, WithFaker;
+    private $question;
+
+    public function setUp()
+    {
+
+        parent::setUp();
+        $this->seed();
+        $this->question = Questions::first();
+    }
+
     public function testStore()
     {
         $response = $this->json('POST', '/api/questions', [
             'question' => "Nova Pergunta",
             'type' => "ABERTA",
             'open_answer' => "..",
-            'close_answer' =>"{\"A\": \"Birros\", \"B\":\"Robertinho\",\"C\":\"Henrique\",\"D\":\"PHP\"}" ,
+            'close_answer' =>"{\"A\": \"Birro\", \"B\":\"Robertinho\",\"C\":\"Henrique\",\"D\":\"PHP\"}" ,
             'feedback' => "A",
             'user_id' => 1,
         ]);
@@ -27,11 +41,11 @@ class QuestionsTest extends TestCase
 
     public function testUpdate()
     {
-        $response = $this->json('PUT', '/api/questions/14', [
+        $response = $this->json('PUT', '/api/questions/'. $this->question->id, [
             'question' => "Nova Pergunta",
-            'type' => "ABERTA",
+            'type' => "1111111",
             'open_answer' => "..",
-            'close_answer' =>"{\"A\": \"Birro\", \"B\":\"Robertinho\",\"C\":\"Henrique\",\"D\":\"PHP\"}" ,
+            'close_answer' =>"{\"A\": \"Birros\", \"B\":\"Robertinho\",\"C\":\"Henrique\",\"D\":\"PHP\"}" ,
             'feedback' => "A",
             'user_id' => 1,
         ]);
@@ -47,14 +61,14 @@ class QuestionsTest extends TestCase
 
     public function testGet()
     {
-        $response = $this->get('/api/questions/5');
+        $response = $this->get('/api/questions/'.$this->question->id);
         $response->assertStatus(200);
     }
 
 
     public function testDelete()
     {
-        $response = $this->delete('/api/questions/5');
+        $response = $this->delete('/api/questions/'.$this->question->id);
         $response->assertStatus(204);
     }
 
