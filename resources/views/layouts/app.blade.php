@@ -21,6 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -45,27 +46,42 @@
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                <div class="dropdown">
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                                        Menu
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Minhas Questões</a>
+                                        <a class="dropdown-item" href="#">Cadastrar Questão</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
                                 </div>
+
+                                {{--<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
+                                    {{--{{ Auth::user()->name }} <span class="caret"></span>--}}
+                                {{--</a>--}}
+
+                                {{--<div class="dropdown-menu" aria-labelledby="navbarDropdown">--}}
+                                    {{--<a class="dropdown-item" href="{{ route('logout') }}"--}}
+                                       {{--onclick="event.preventDefault();--}}
+                                                     {{--document.getElementById('logout-form').submit();">--}}
+                                        {{--{{ __('Logout') }}--}}
+                                    {{--</a>--}}
+
+                                    {{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+                                        {{--@csrf--}}
+                                    {{--</form>--}}
+                                {{--</div>--}}
                             </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
+
+
 
         <main class="py-4">
             @yield('content')
