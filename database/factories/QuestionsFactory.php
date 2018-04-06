@@ -9,6 +9,6 @@ $factory->define(\App\Questions::class, function (Faker $faker) {
         'open_answer' => "..",
         'close_answer' => "{\"A\": \"Birro\", \"B\":\"Robertinho\",\"C\":\"Henrique\",\"D\":\"PHP\"}",
         'feedback' => "A",
-        'user_id' =>1,
+        'users_id' =>1,
     ];
 });

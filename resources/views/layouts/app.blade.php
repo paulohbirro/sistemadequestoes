@@ -19,6 +19,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
 </head>
 <body>
 
@@ -54,8 +58,18 @@
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#">Minhas Questões</a>
-                                        <a class="dropdown-item" href="#">Cadastrar Questão</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <a class="dropdown-item" href="{{route('question.create')}}">Cadastrar Questão</a>
+
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        {{ __('Sair') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                        </form>
+
                                     </div>
                                 </div>
 
@@ -81,11 +95,15 @@
             </div>
         </nav>
 
-
-
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+
+
 </body>
 </html>
+
+
+
+

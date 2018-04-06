@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Questions;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $question = Questions::all();
+
+
+
+
+        return view('home')->with(compact('question'));
     }
 }

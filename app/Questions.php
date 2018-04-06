@@ -15,4 +15,6 @@ class Questions extends Model
         'question', 'type', 'open_answer','close_answer','feedback','user_id'
     ];
 
+
+
 }

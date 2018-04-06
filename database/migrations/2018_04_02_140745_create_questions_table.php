@@ -16,12 +16,12 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('question');
+            $table->string('question')->unique();
             $table->string('type')->default(Questions::ABERTA);
-            $table->string('open_answer');
-            $table->string('close_answer');
+            $table->string('open_answer')->nullable();
+            $table->string('close_answer')->nullable();
             $table->string('feedback');
-            $table->integer('user_id');
+            $table->integer('users_id');
 
             $table->timestamps();
         });
