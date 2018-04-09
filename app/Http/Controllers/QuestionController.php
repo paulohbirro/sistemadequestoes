@@ -50,7 +50,7 @@ class QuestionController extends Controller
         $data = $request->all();
         Questions::create($data);
 
-        return redirect()->back()->with(['message' => 'Banner alterado com sucesso!']);
+        return redirect()->back()->with(['message' => 'Cadastrado com sucesso!']);
     }
 
     /**
