@@ -7,9 +7,15 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## Api Banco de Questões
+
+## Api Banco de Questões - Startline 
 
 Para testar API, pode acessar a documentação publicada pelo postman.
+## Acessando documentação API  - postman
+
+https://documenter.getpostman.com/view/2906328/collection/RVu5jUPU
+
+
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
