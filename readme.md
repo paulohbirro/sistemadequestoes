@@ -24,7 +24,7 @@ https://documenter.getpostman.com/view/2906328/collection/RVu5jUPU
 
 #### 4 rode o comando em seu terminal:
 
-´composer install  ( para baixar as depêndencias do projeto )
+composer install  ( para baixar as depêndencias do projeto )
 
 #### 5 rode o comando:
 
@@ -39,6 +39,12 @@ php artisan migrate:install
 #### 8 agora rode o camando para executar o projeto: 
 
 php artisan serve
+
+#### Teste unitario
+
+Rode o comando :phpunit
+
+
 
 #### License
 
