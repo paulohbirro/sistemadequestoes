@@ -1,4 +1,4 @@
-# Api Banco de Questões - Startline 
+# Api Banco de Questões - Starline 
 
 Para testar API, pode acessar a documentação publicada pelo postman.
 ## Acessando documentação API  - postman
