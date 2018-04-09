@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\admin\QuestionStoreRequest;
+use App\Questions;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -11,9 +15,15 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, Questions $question)
     {
-       return view('question.index');
+
+
+        $question = $question->where('created_at','<=',now())
+            ->where('users_id','=',Auth::user()->name)
+            ->orderBy('created_at')->paginate(5);
+
+       return view('question.index')->with(compact('question'));
     }
 
     /**
@@ -32,9 +42,18 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionStoreRequest $request)
     {
-        //
+        $close_answer = $request->only('A','B','C','D');
+        $request['close_answer'] = json_encode($close_answer);
+        $request['users_id'] = Auth::user()->name;
+
+        $data = $request->all();
+
+        Questions::create($data);
+        return redirect()->back()->with(['message' => 'Banner alterado com sucesso!']);
+
+
     }
 
     /**
@@ -79,6 +98,8 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $question  = Questions::find($id);
+        $question->delete();
+        return redirect()->back()->with(['message' => 'Removido com sucesso!']);
     }
 }

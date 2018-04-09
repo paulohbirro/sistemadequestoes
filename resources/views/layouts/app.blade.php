@@ -13,15 +13,17 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-</head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   </head>
 
 </head>
 <body>
@@ -54,10 +56,11 @@
                                 <div class="dropdown">
 
                                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                                        Menu
+                                        Meu painel
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Minhas Questões</a>
+                                        <a class="dropdown-item" href="{{route('question.index')}}">Minhas Questões</a>
+                                        <a class="dropdown-item" href="{{route('home')}}">Questões publicas</a>
                                         <a class="dropdown-item" href="{{route('question.create')}}">Cadastrar Questão</a>
 
                                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -94,15 +97,32 @@
                 </div>
             </div>
         </nav>
-
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if(session()->has('message'))
+            <script>
+                swal({
+                    title: "Mensagem",
+                    text: "{{ session('message') }}",
+                    type: "warning"
+                });
+            </script>
+        @endif
         <main class="py-4">
             @yield('content')
         </main>
     </div>
 
-
 </body>
 </html>
+
 
 
 

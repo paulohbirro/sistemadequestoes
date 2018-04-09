@@ -4,14 +4,16 @@
             Pergunta:
         </label>
             <div class="form-group">
-                <textarea rows="4" cols="50"></textarea>
+                <textarea name="question" class="col-12" rows="4" cols="50"></textarea>
             </div>
 
+        <label for="exampleInputEmail1">
+            Resposta:
+        </label>
             <div class="form-group">
 
-
-                <input checked name="tipo" id="tipo" value="A" type="radio" > Aberta:
-                <input name="tipo" id="tipo" value="F" type="radio" > Fechada:
+                <input checked name="type" id="aberta" value="A" type="radio" > Aberta:
+                <input name="type" id="fechada" value="F" type="radio" > Fechada:
 
             </div>
 
@@ -20,7 +22,7 @@
                 Gabarito:
             </label>
             <div class="form-group">
-                <textarea rows="4" cols="50"></textarea>
+                <textarea name="open_answer"  class="col-12"  rows="4" cols="50"></textarea>
             </div>
         </div>
 
@@ -28,44 +30,44 @@
 
         <div class="form-group">
 
-            <label for="exampleInputEmail1">
+            <label>
                 A:
             </label>
-            <input class="form-control" id="exampleInputEmail1" type="email" />
+            <input name="A" class="form-control" type="text" />
         </div>
 
         <div class="form-group">
 
-            <label for="exampleInputEmail1">
+            <label>
                 B:
             </label>
-            <input class="form-control" id="exampleInputEmail1" type="email" />
+            <input name="B" class="form-control" type="text" />
         </div>
 
         <div class="form-group">
 
-            <label for="exampleInputEmail1">
+            <label >
                 C:
             </label>
-            <input class="form-control" id="exampleInputEmail1" type="email" />
+            <input name="C" class="form-control"  type="text" />
         </div>
 
         <div class="form-group">
 
-            <label for="exampleInputEmail1">
+            <label >
                 D:
             </label>
-            <input class="form-control" id="exampleInputEmail1" type="email" />
+            <input name="D" class="form-control" type="text" />
         </div>
 
-        <label for="exampleInputEmail1">
+        <label >
             Gabarito:
         </label>
         <div class="form-group">
-            <input type="radio" >  A
-            <input type="radio" >   B
-            <input type="radio" > C
-            <input type="radio" > D
+            <input name="feedback" value="A" type="radio" > A
+            <input name="feedback" value="B" type="radio" > B
+            <input name="feedback" value="C" type="radio" > C
+            <input name="feedback" value="D" type="radio" > D
         </div>
 
     </div>
@@ -77,9 +79,17 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
-        $("#tipo").click(function() {
-            alert($('#tipo').val());
+        $("#gAberta").show();
+        $("#aberta").click(function () {
+            $("#gAberta").show('slow');
+            $("#gFechada").hide();
         });
+
+        $("#fechada").click(function () {
+            $("#gFechada").show('slow');
+            $("#gAberta").hide();
+        });
+
     });
 
 </script>

@@ -6,13 +6,6 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Banco de questões</div>
-
-
-
-
-
-
-
                     {{--<div class="card-body">--}}
                     {{--@if (session('status'))--}}
                     {{--<div class="alert alert-success">--}}
@@ -25,7 +18,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table">
+                            <table class="table table table-hover">
                                 <thead>
                                 <tr>
                                     <th>
@@ -60,7 +53,8 @@
                                         {{$questions->type}}
                                     </td>
                                     <td>
-                                        Default
+                                        {{$questions->users_id}} <i class="icon-user icon-white"></i> User</a>
+
                                     </td>
                                 </tr>
 
@@ -80,6 +74,12 @@
 
 
                 </div>
+            </div>
+
+        </div>
+        <div class="row">
+                <div class="col-md-12 ">
+                {{ $question->appends(request()->query())->render() }}
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Questions;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,13 +23,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Questions $question)
     {
-
-        $question = Questions::all();
-
-
-
+        $question = $question->where('created_at','<=',now())
+                             ->where('users_id','!=',Auth::user()->name)
+                             ->orderBy('created_at')->paginate();
 
         return view('home')->with(compact('question'));
     }

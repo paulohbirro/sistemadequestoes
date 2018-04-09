@@ -12,7 +12,7 @@ class Questions extends Model
     const ABERTA = "ABERTA";
 
     protected $fillable = [
-        'question', 'type', 'open_answer','close_answer','feedback','user_id'
+        'question', 'type', 'open_answer','close_answer','feedback','users_id'
     ];
 
 

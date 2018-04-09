@@ -20,8 +20,8 @@ class CreateQuestionsTable extends Migration
             $table->string('type')->default(Questions::ABERTA);
             $table->string('open_answer')->nullable();
             $table->string('close_answer')->nullable();
-            $table->string('feedback');
-            $table->integer('users_id');
+            $table->string('feedback')->nullable();
+            $table->string('users_id');
 
             $table->timestamps();
         });
