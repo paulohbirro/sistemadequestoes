@@ -17,13 +17,11 @@ class QuestionController extends Controller
      */
     public function index(Request $request, Questions $question)
     {
-
-
         $question = $question->where('created_at','<=',now())
-            ->where('users_id','=',Auth::user()->name)
-            ->orderBy('created_at')->paginate(5);
+        ->where('users_id','=',Auth::user()->name)
+        ->orderBy('created_at')->paginate(5);
 
-       return view('question.index')->with(compact('question'));
+        return view('question.index')->with(compact('question'));
     }
 
     /**
@@ -45,15 +43,14 @@ class QuestionController extends Controller
     public function store(QuestionStoreRequest $request)
     {
         $close_answer = $request->only('A','B','C','D');
+
         $request['close_answer'] = json_encode($close_answer);
         $request['users_id'] = Auth::user()->name;
 
         $data = $request->all();
-
         Questions::create($data);
+
         return redirect()->back()->with(['message' => 'Banner alterado com sucesso!']);
-
-
     }
 
     /**
@@ -64,7 +61,7 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        // NÃO IMPLEMENTEI
     }
 
     /**
@@ -77,8 +74,6 @@ class QuestionController extends Controller
     {
         $question = Questions::find($id);
         $response = json_decode($question->close_answer);
-
-
         return view('question.update')->with(compact('question','response'));
     }
 
@@ -91,7 +86,19 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $question  = Questions::find($id);
+        $feedArray = array("A"=>$request->A,"B"=>$request->B,"C"=>$request->C,"D"=>$request->D);
+        $closeAnswer= json_encode($feedArray);
+
+        $question->question = $request->get('question');
+        $question->type = $request->get('type');
+        $question->open_answer = $request->get('open_answer');
+        $question->close_answer = $closeAnswer;
+        $question->feedback = $request->get('feedback');;
+        $question->save();
+
+        return redirect()->back()->with(['message' => 'Alterado com sucesso']);
+
     }
 
     /**

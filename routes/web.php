@@ -23,6 +23,7 @@ Route::get('/edit/{id}', 'QuestionController@edit')->name('question.edit');
 Route::get('/list', 'QuestionController@index')->name('question.index');
 Route::get('/question', 'QuestionController@create')->name('question.create');
 Route::post('/question', 'QuestionController@store')->name('question.store');
+Route::put('/question/{id}', 'QuestionController@update')->name('question.update');
 
 
 

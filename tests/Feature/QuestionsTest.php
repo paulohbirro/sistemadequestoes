@@ -20,20 +20,23 @@ class QuestionsTest extends TestCase
 
     public function setUp()
     {
+
         parent::setUp();
         $this->seed();
         $this->question = Questions::first();
+
+
     }
 
     public function testStore()
     {
         $response = $this->json('POST', '/api/questions', [
             'question' => "Nova Pergunta",
-            'type' => "ABERTA",
+            'type' => "A",
             'open_answer' => "..",
             'close_answer' =>"{\"A\": \"Birro\", \"B\":\"Robertinho\",\"C\":\"Henrique\",\"D\":\"PHP\"}" ,
             'feedback' => "A",
-            'user_id' => 1,
+            'users_id' => "paulo"
         ]);
         $response->assertStatus(201);
     }
@@ -42,11 +45,11 @@ class QuestionsTest extends TestCase
     {
         $response = $this->json('PUT', '/api/questions/'. $this->question->id, [
             'question' => "Nova Pergunta",
-            'type' => "1111111",
+            'type' => "A",
             'open_answer' => "..",
             'close_answer' =>"{\"A\": \"Birros\", \"B\":\"Robertinho\",\"C\":\"Henrique\",\"D\":\"PHP\"}" ,
             'feedback' => "A",
-            'user_id' => 1,
+            'users_id' => "paulo"
         ]);
         $response->assertStatus(200);
     }

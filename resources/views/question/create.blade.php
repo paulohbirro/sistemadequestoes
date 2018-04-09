@@ -1,7 +1,5 @@
 @extends('layouts.app', ['title' => 'Cadastro de questões', 'back' => route('question.index')])
 
-
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -16,9 +14,6 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-
 @endsection
 

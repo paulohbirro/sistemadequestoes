@@ -4,11 +4,11 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Questions::class, function (Faker $faker) {
     return [
-        'question' => "Quem descobriu Brasil?",
-        'type' => \App\Questions::MULTIPLA,
-        'open_answer' => "..",
-        'close_answer' => "{\"A\": \"Birro\", \"B\":\"Robertinho\",\"C\":\"Henrique\",\"D\":\"PHP\"}",
+        'question' => "Quem descobriu ".$faker->streetName."?",
+        'type' => "F",
+        'open_answer' => "",
+        'close_answer' => "{\"A\": \"Pedro Alves Cabral\", \"B\":\"Eu\",\"C\":\"Paulo Birro\",\"D\":\"Mickey mouse\"}",
         'feedback' => "A",
-        'users_id' =>1,
+        'users_id' =>$faker->name,
     ];
 });

@@ -8,8 +8,10 @@ use App\Http\Controllers\Controller;
 
 class QuestionsController extends Controller
 {
-
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Database\Eloquent\Collection|mixed|static[]
+     */
     public function index(Request $request)
     {
         $questions = Questions::all();
@@ -18,9 +20,6 @@ class QuestionsController extends Controller
         * Transform
         */
         $questions->transform(function (Questions $questions) {
-
-            $response = json_decode($questions->close_answer);
-
             return [
                 'id' => $questions->id,
                 'type' => $questions->type,
@@ -28,7 +27,7 @@ class QuestionsController extends Controller
                 'open_answer' => $questions->open_answer,
                 'close_answer' => $questions->close_answer ,
                 'feedback' => $questions->feedback,
-                'user_id' => $questions->user_id,
+                'users_id' => $questions->users_id,
             ];
         });
 
@@ -78,11 +77,10 @@ class QuestionsController extends Controller
         $questions->open_answer  = $request->get('open_answer');
         $questions->close_answer = $request->get('close_answer');
         $questions->feedback     = $request->get('feedback');
-        $questions->user_id      = $request->get('user_id');
+        $questions->users_id      = $request->get('users_id');
         $questions->save();
 
         return response()->json()->setStatusCode('200');
-
     }
 
     /**
