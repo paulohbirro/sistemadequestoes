@@ -24,7 +24,7 @@ https://documenter.getpostman.com/view/2906328/collection/RVu5jUPU
 
 #### 4 rode o comando em seu terminal:
 
-`composer install  ( para baixar as depêndencias do projeto )
+´composer install  ( para baixar as depêndencias do projeto )
 
 #### 5 rode o comando:
 
