@@ -31,9 +31,25 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                {{--<a class="navbar-brand" href="{{ url('/') }}">--}}
+                    {{--{{ config('app.name', 'Laravel') }}--}}
+                {{--</a>--}}
+
+
+                <div class="col-8">
+
+                    @if(isset($back))
+                        <a href="{{ $back }}"><i class="material-icons button-back">arrow_back</i></a>
+                    @endif
+
+                </div>
+
+                <div class="col-4">
+                    <a href="#!" class="brand-logo">{{ $title or 'Admin - Banco de Questões' }}</a>
+                </div>
+
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -19,8 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/question/{id}', 'QuestionController@destroy')->name('question.destroy');
+Route::get('/edit/{id}', 'QuestionController@edit')->name('question.edit');
 Route::get('/list', 'QuestionController@index')->name('question.index');
 Route::get('/question', 'QuestionController@create')->name('question.create');
 Route::post('/question', 'QuestionController@store')->name('question.store');
+
 
 

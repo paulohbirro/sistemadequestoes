@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Cadastro de questões', 'back' => route('question.index')])
 
 
 

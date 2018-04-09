@@ -4,7 +4,7 @@
             Pergunta:
         </label>
             <div class="form-group">
-                <textarea name="question" class="col-12" rows="4" cols="50"></textarea>
+                <textarea name="question" class="col-12" rows="4" cols="50">{{old('question',isset($question->question) ? $question->question : '')}}</textarea>
             </div>
 
         <label for="exampleInputEmail1">
@@ -12,8 +12,8 @@
         </label>
             <div class="form-group">
 
-                <input checked name="type" id="aberta" value="A" type="radio" > Aberta:
-                <input name="type" id="fechada" value="F" type="radio" > Fechada:
+                <input  {{( (isset($question) and $question->type=='A') or (old('type') == "A"))? 'checked' : '' }} checked name="type" id="aberta" value="A" type="radio" > Aberta:
+                <input  {{( (isset($question) and $question->type=='F') or (old('type') == "F"))? 'checked' : '' }} name="type" id="fechada" value="F" type="radio" > Fechada:
 
             </div>
 
@@ -22,7 +22,7 @@
                 Gabarito:
             </label>
             <div class="form-group">
-                <textarea name="open_answer"  class="col-12"  rows="4" cols="50"></textarea>
+                <textarea name="open_answer"  class="col-12"  rows="4" cols="50">{{old('question',isset($question->open_answer) ? $question->open_answer : '')}}</textarea>
             </div>
         </div>
 
@@ -33,7 +33,7 @@
             <label>
                 A:
             </label>
-            <input name="A" class="form-control" type="text" />
+            <input name="A" value="{{old('A',isset($response->A) ? $response->A : '')}}" class="form-control" type="text" />
         </div>
 
         <div class="form-group">
@@ -41,7 +41,7 @@
             <label>
                 B:
             </label>
-            <input name="B" class="form-control" type="text" />
+            <input name="B" value="{{old('B',isset($response->B) ? $response->B : '')}}" class="form-control" type="text" />
         </div>
 
         <div class="form-group">
@@ -49,7 +49,7 @@
             <label >
                 C:
             </label>
-            <input name="C" class="form-control"  type="text" />
+            <input name="C" value="{{old('C',isset($response->C) ? $response->C : '')}}" class="form-control"  type="text" />
         </div>
 
         <div class="form-group">
@@ -57,17 +57,17 @@
             <label >
                 D:
             </label>
-            <input name="D" class="form-control" type="text" />
+            <input name="D" value="{{old('D',isset($response->D) ? $response->D : '')}}"  class="form-control" type="text" />
         </div>
 
         <label >
             Gabarito:
         </label>
         <div class="form-group">
-            <input name="feedback" value="A" type="radio" > A
-            <input name="feedback" value="B" type="radio" > B
-            <input name="feedback" value="C" type="radio" > C
-            <input name="feedback" value="D" type="radio" > D
+            <input name="feedback" {{( (isset($question) and $question->feedback=='A') or (old('feedback') == "A"))? 'checked' : '' }} value="A" type="radio" > A
+            <input name="feedback" {{( (isset($question) and $question->feedback=='B') or (old('feedback') == "B"))? 'checked' : '' }} value="B" type="radio" > B
+            <input name="feedback" {{( (isset($question) and $question->feedback=='C') or (old('feedback') == "C"))? 'checked' : '' }} value="C" type="radio" > C
+            <input name="feedback" {{( (isset($question) and $question->feedback=='D') or (old('feedback') == "D"))? 'checked' : '' }} value="D" type="radio" > D
         </div>
 
     </div>

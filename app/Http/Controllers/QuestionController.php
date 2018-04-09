@@ -75,7 +75,11 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $question = Questions::find($id);
+        $response = json_decode($question->close_answer);
+
+
+        return view('question.update')->with(compact('question','response'));
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Listagem de questões', 'back' => route('home')])
 
 @section('content')
     <div class="container">
@@ -41,11 +41,13 @@
                                             {{$questions->question}}
                                         </td>
                                         <td>
-                                            {{$questions->type}}
+
+
+                                            {{$questions->type=="A"?\App\Questions::ABERTA:\App\Questions::MULTIPLA}}
                                         </td>
 
                                         <td>
-                                            <button class="btn btn-success"><i class="material-icons">edit</i></button>
+                                            <a href="{{route('question.edit',$questions->id)}}" class="btn btn-success"><i class="material-icons">edit</i></a>
                                             <a  class="btn btn-danger" href="{{route('question.destroy',$questions->id)}}"><i class="material-icons">delete</i></a>
 
                                         </td>

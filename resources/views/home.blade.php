@@ -33,14 +33,15 @@
                                     <th>
                                         Usuário
                                     </th>
+                                    <th>
+                                        Gerenciar
+                                    </th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
 
                                 @forelse($question as $questions)
-
-
 
                                 <tr>
                                     <td>
@@ -50,11 +51,14 @@
                                         {{$questions->question}}
                                     </td>
                                     <td>
-                                        {{$questions->type}}
+                                        {{$questions->type=="A"?\App\Questions::ABERTA:\App\Questions::MULTIPLA}}
                                     </td>
                                     <td>
-                                        {{$questions->users_id}} <i class="icon-user icon-white"></i> User</a>
+                                        {{$questions->users_id}}
 
+                                    </td>
+                                    <td>
+                                        <a href="{{route('question.edit',$questions->id)}}" class="btn btn-success"><i class="material-icons">edit</i></a>
                                     </td>
                                 </tr>
 
@@ -63,10 +67,6 @@
                                         <td colspan="11">Nenhuma pedido encontrado</td>
                                     </tr>
                                 @endforelse
-
-
-
-
                                 </tbody>
                             </table>
                         </div>
